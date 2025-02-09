@@ -1,8 +1,7 @@
 
 
-const GRAPHQL_URL = process.env.GRAPHQL_URL as string;
-
 export const loginUser = async (email: string, password: string) => {
+    const GRAPHQL_URL = process.env.GRAPHQL_URL as string;
     const query = `query User($email: String!, $password: String!) {
         user(email: $email, password: $password) {
             id
@@ -23,6 +22,7 @@ export const loginUser = async (email: string, password: string) => {
         "email": `${ email }`,
         "password": `${ password }`
     }
+    console.log(GRAPHQL_URL, query, variables)
     try {
         const response = await fetch(GRAPHQL_URL, {
             method: 'POST',
