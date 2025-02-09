@@ -22,7 +22,6 @@ export const loginUser = async (email: string, password: string) => {
         "email": `${ email }`,
         "password": `${ password }`
     }
-    console.log(GRAPHQL_URL, query, variables)
     try {
         const response = await fetch(GRAPHQL_URL, {
             method: 'POST',
