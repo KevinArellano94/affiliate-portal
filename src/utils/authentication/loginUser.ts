@@ -21,7 +21,7 @@ export const loginUser = async (email: string, password: string) => {
         }
     }`;
     const variables = {
-        "email": `${ email }`,
+        "email": `${ email.toLocaleLowerCase() }`,
         "password": `${ password }`
     }
     
