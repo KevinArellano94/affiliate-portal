@@ -1,42 +1,203 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/* Core container with premium dark gradient */
+.hero-container {
+    background: linear-gradient(180deg, #1a1f2d 0%, #0f1117 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 1rem;
+    text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Enterprise-grade typography system */
+.hero-title {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(90deg, #60A5FA 0%, #A78BFA 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.hero-description {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    line-height: 1.6;
+    color: #94A3B8;
+    max-width: 780px;
+    margin: 0 auto 2.5rem;
 }
 
-.card {
-  padding: 2em;
+/* High-conversion CTA button */
+.cta-button {
+    background: #3B82F6;
+    color: #FFFFFF;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-size: 1.125rem;
+    font-weight: 600;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
-.read-the-docs {
-  color: #888;
+.cta-button:hover {
+    background: #2563EB;
+    transform: translateY(-2px);
+}
+
+/* Arrow icon enhancement */
+.cta-button::after {
+    content: '→';
+    font-size: 1.25rem;
+    transition: transform 0.2s ease-in-out;
+}
+
+.cta-button:hover::after {
+    transform: translateX(4px);
+}
+
+/* Responsive optimization */
+@media (max-width: 640px) {
+    .hero-container {
+        padding: 3rem 1rem;
+    }
+}
+
+/* Strategic Features Layout */
+.features-section {
+    padding: 6rem 2rem;
+    /* background: linear-gradient(180deg, #0f1117 0%, #1a1f2d 100%); */
+    background: linear-gradient(0deg, #1a1f2d 0%, #0f1117 100%);
+}
+
+/* Enterprise-grade Section Header */
+.features-title {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    font-weight: 700;
+    color: #FFFFFF;
+    text-align: center;
+    margin-bottom: 4rem;
+    letter-spacing: -0.02em;
+}
+
+/* Feature Card Architecture */
+.feature-card {
+    max-width: 1000px;
+    margin: 0 auto 3rem;
+    padding: 2rem;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: transform 0.3s ease-in-out;
+}
+
+.feature-card:hover {
+    transform: translateY(-4px);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Feature Icon Innovation */
+.feature-icon {
+    font-size: 2.5rem;
+    color: #60A5FA;
+    margin-bottom: 1.5rem;
+}
+
+/* Feature Content Hierarchy */
+.feature-title {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #FFFFFF;
+    margin-bottom: 1rem;
+}
+
+.feature-description {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: #94A3B8;
+}
+
+/* Responsive Engineering */
+@media (max-width: 768px) {
+    .features-section {
+        padding: 4rem 1rem;
+    }
+    
+    .feature-card {
+        padding: 1.5rem;
+    }
+}
+
+/* Bottom CTA Section */
+.cta-section {
+    text-align: center;
+    padding: 4rem 1rem;
+    /* background: linear-gradient(180deg, #0f1117 0%, #1a1f2d 100%); */
+    background: linear-gradient(180deg, #1a1f2d 0%, #0f1117 100%);
+}
+
+/* CTA Title */
+.cta-title {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 1rem;
+}
+
+/* CTA Description */
+.cta-description {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    line-height: 1.6;
+    color: #94A3B8;
+    max-width: 680px;
+    margin: 0 auto 2rem;
+}
+
+/* CTA Button */
+.cta-button {
+    background: #3B82F6;
+    color: #FFFFFF;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-size: 1.125rem;
+    font-weight: 600;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.cta-button:hover {
+    background: #2563EB;
+    transform: translateY(-2px);
+}
+
+/* CTA Button Icon */
+.cta-button::after {
+    content: '→';
+    font-size: 1.25rem;
+    transition: transform 0.2s ease-in-out;
+}
+
+.cta-button:hover::after {
+    transform: translateX(4px);
 }
