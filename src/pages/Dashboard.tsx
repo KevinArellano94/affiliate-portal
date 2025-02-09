@@ -7,6 +7,8 @@ const Dashboard = ({ user }: any) => {
     return (
         <>
             <h2>Welcome { user.fullName }!</h2>
+            <h4>Fullname: { user.fullName }</h4>
+            <h4>Email: { user.email }</h4>
         </>
     )
 }
