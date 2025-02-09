@@ -1,9 +1,7 @@
 
 
-const GRAPHQL_URL = `https://apollo-render-bd2p.onrender.com`;
-
 export const loginUser = async (email: string, password: string) => {
-    // const GRAPHQL_URL = import.meta.env.VITE_GRAPHQL_URL as string;
+    const GRAPHQL_URL = import.meta.env.VITE_GRAPHQL_URL as string;
     const query = `query User($email: String!, $password: String!) {
         user(email: $email, password: $password) {
             id
