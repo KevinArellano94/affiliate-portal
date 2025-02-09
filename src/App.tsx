@@ -15,7 +15,7 @@ function App() {
 		<Router>
 			<Routes>
 			<Route path="/" element={<Home />} />
-			<Route path="/register" element={<Register setUser={ setUser } />} />
+			<Route path="/register" element={<Register />} />
 			<Route path="/login" element={<Login setUser={ setUser } />} />
 			<Route path="/dashboard" element={<Suspense fallback={<div>Loading...</div>}><Dashboard user={ user } /></Suspense>} />
 			</Routes>
