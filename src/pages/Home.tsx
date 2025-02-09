@@ -13,7 +13,7 @@ const Home = () => {
                 <p className="hero-description">
                     Welcome to the next generation of affiliate marketing. Our AI-powered platform revolutionizes how you track, earn, and grow your passive income streams.
                 </p>
-                <button className="cta-button" onClick={ () => navigate("/login") }>
+                <button className="cta-button" onClick={ () => navigate("/register") }>
                     Start Earning Now
                 </button>
             </div>
@@ -110,7 +110,7 @@ const Home = () => {
                 <p className="cta-description">
                     Join thousands of successful affiliates who are already leveraging our next-gen platform to automate their earnings.
                 </p>
-                <button className="cta-button" onClick={ () => navigate("/login") }>Join the Revolution</button>
+                <button className="cta-button" onClick={ () => navigate("/register") }>Join the Revolution</button>
             </section>
         </>
     )
