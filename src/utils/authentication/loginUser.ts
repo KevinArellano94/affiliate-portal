@@ -1,6 +1,8 @@
 
 
-const GRAPHQL_URL = process.env.GRAPHQL_URL as string || `http://localhost:4000/`
+const GRAPHQL_URL = 'http://localhost:4000/';
+// const GRAPHQL_URL = 'https://apollo-render-bd2p.onrender.com';
+// const GRAPHQL_URL = process.env.GRAPHQL_URL as string || `http://localhost:4000/`;
 
 export const loginUser = async (email: string, password: string) => {
     const query = `query User($email: String!, $password: String!) {
