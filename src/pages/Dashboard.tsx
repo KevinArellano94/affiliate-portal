@@ -1,4 +1,4 @@
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { userLinks } from "../utils/function/userLinks";
 import { userPerformance } from "../utils/function/userPerformances";
@@ -25,7 +25,18 @@ const Dashboard = ({ user }: any) => {
         }
     };
 
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!user.token) {
+            navigate("/");
+        }
+    }, [user.token, navigate]);
+
+    const handleLogout = () => {
+        // setUser(null); // Clear user state
+        navigate("/");
+    };
 
     useEffect(() => {
         const fetchLinks = async () => {
@@ -169,6 +180,10 @@ const Dashboard = ({ user }: any) => {
                 ) : (
                     <p>No performances available.</p>
                 )}
+
+                <br /><br /><br /><br />
+                
+                <button onClick={handleLogout} className="cta-button">Logout</button>
             </div>
         </>
     )
