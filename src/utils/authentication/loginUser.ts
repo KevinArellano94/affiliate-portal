@@ -2,6 +2,8 @@
 
 export const loginUser = async (email: string, password: string) => {
     const GRAPHQL_URL = import.meta.env.VITE_GRAPHQL_URL as string;
+    const GRAPHQL_TOKEN = import.meta.env.VITE_GRAPHQL_TOKEN as string;
+
     const query = `query User($email: String!, $password: String!) {
         user(email: $email, password: $password) {
             id
@@ -27,7 +29,7 @@ export const loginUser = async (email: string, password: string) => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer derp'
+                'Authorization': `Bearer ${ GRAPHQL_TOKEN }`
             },
             body: JSON.stringify({ query, variables }),
         });
