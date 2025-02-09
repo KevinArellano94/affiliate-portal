@@ -165,6 +165,7 @@ const Register = () => {
                     Already have an account?
                     <a
                         className="auth-switch-link ml-1 text-blue-600 hover:text-blue-700 cursor-pointer"
+                        style={{ cursor: "pointer" }}
                         onClick={() => navigate("/login")}
                     >
                     Login to account

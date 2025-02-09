@@ -7,6 +7,7 @@ const Login = ({ setUser }: any) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState("");
+    const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
 
     const handleLogin = async () => {
@@ -51,7 +52,13 @@ const Login = ({ setUser }: any) => {
                             value={ password }
                             onChange={ e => setPassword(e.target.value) }
                         />
-                        <span className="password-toggle">👁️</span>
+                        <button
+                                type="button"
+                                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                                onClick={() => setShowPassword(!showPassword)}
+                            >
+                                👁️
+                            </button>
                     </div>
 
                     <p className="error-message">{ message }</p>
@@ -65,8 +72,8 @@ const Login = ({ setUser }: any) => {
                     New to the platform?
                     <a
                         className="auth-switch-link"
-                        onClick={ () => navigate("/register") }
                         style={{ cursor: "pointer" }}
+                        onClick={ () => navigate("/register") }
                     >Create an account</a>
                 </div>
             </div>
