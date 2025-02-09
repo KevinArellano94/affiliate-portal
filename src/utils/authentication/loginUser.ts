@@ -1,7 +1,7 @@
 
 
 export const loginUser = async (email: string, password: string) => {
-    const REACT_APP_GRAPHQL_URL = process.env.REACT_APP_GRAPHQL_URL as string;
+    const GRAPHQL_URL = import.meta.env.VITE_GRAPHQL_URL as string;
     const query = `query User($email: String!, $password: String!) {
         user(email: $email, password: $password) {
             id
@@ -22,9 +22,9 @@ export const loginUser = async (email: string, password: string) => {
         "email": `${ email }`,
         "password": `${ password }`
     }
-    console.log(REACT_APP_GRAPHQL_URL, query, variables)
+    console.log(GRAPHQL_URL, query, variables)
     try {
-        const response = await fetch(REACT_APP_GRAPHQL_URL, {
+        const response = await fetch(GRAPHQL_URL, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
