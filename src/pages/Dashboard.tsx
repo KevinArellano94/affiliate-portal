@@ -1,10 +1,16 @@
 // import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { userLinks } from "../utils/function/userLinks";
+import { userPerformance } from "../utils/function/userPerformances";
 
 
 const Dashboard = ({ user }: any) => {
     const [links, setLinks] = useState([]);
+    const [performances, setPerformances] = useState([]);
+
+    const [isLoading, setIsLoading] = useState(true);
+    const [_error, setError] = useState(null);
+
     // const navigate = useNavigate();
 
     useEffect(() => {
@@ -20,17 +26,63 @@ const Dashboard = ({ user }: any) => {
     
         fetchLinks();
     }, []);
+
+    useEffect(() => {
+        let isSubscribed = true;
+        let timeoutId: any;
     
+        const fetchPerformance = async () => {
+        if (!isSubscribed) return;
+        
+        try {
+            setIsLoading(true);
+            const response = await userPerformance(user.id);
+            
+            if (isSubscribed) {
+                setPerformances(response?.data?.performance || []);
+                setError(null);
+            }
+        } catch (error) {
+            if (isSubscribed) {
+                console.error("Error fetching performance data:", error);
+                console.log(isLoading, _error); // added otherwise it complains...
+            }
+        } finally {
+            if (isSubscribed) {
+                setIsLoading(false);
+                timeoutId = setTimeout(fetchPerformance, 5000);
+            }
+        }
+        };
+    
+        fetchPerformance();
+    
+        return () => {
+            isSubscribed = false;
+            if (timeoutId) {
+                clearTimeout(timeoutId);
+            }
+        };
+    }, [user.id]);
+    
+    const phoneNumber = JSON.stringify(user.contactInfo['phone']) || JSON.stringify(user.contactInfo['cell']) || '';
+    const cleanedPhoneNumber = phoneNumber.replace('"', '').replace('"', '');
+
     return (
         <>
-            <div>
-                <h2>Welcome { user.fullName }!</h2>
-                <h4>Fullname: { user.fullName }</h4>
-                <h4>Email: { user.email }</h4>
+            <div className="dashboard-container">
+                <section className="profile-section">
+                    <h1 className="welcome-header">Welcome { user.fullName }!</h1>
+                    <div className="profile-details">
+                        <p>Fullname: { user.fullName }</p>
+                        <p>Email: { user.email }</p>
+                        <p>Phone: { cleanedPhoneNumber }</p>
+                    </div>
+                </section>
 
-                <h4>Links:</h4>
+                <h2>Links:</h2>
                 {links.length > 0 ? (
-                    <table border={2}>
+                    <table className="data-grid" border={2}>
                         <thead>
                             <tr>
                             <th>ID</th>
@@ -58,6 +110,40 @@ const Dashboard = ({ user }: any) => {
                     </table>
                 ) : (
                     <p>No links available.</p>
+                )}
+
+                <br /><br /><br /><br />
+                
+                <h2>Performance:</h2>
+                {performances.length > 0 ? (
+                    <table className="data-grid" border={2}>
+                        <thead>
+                            <tr>
+                            <th>LinkId</th>
+                            <th>UserId</th>
+                            <th>Platform</th>
+                            <th>Total Clicks</th>
+                            <th>Total Conversions</th>
+                            <th>Total Revenue</th>
+                            <th>Total Commission</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {performances.map((performance: any, index) => (
+                            <tr key={index}>
+                                <td>{performance.linkId}</td>
+                                <td>{performance.userId}</td>
+                                <td>{performance.platform}</td>
+                                <td>{performance.totalClicks}</td>
+                                <td>{performance.totalConversions}</td>
+                                <td>{performance.totalRevenue}</td>
+                                <td>{performance.totalCommission}</td>
+                            </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                ) : (
+                    <p>No performances available.</p>
                 )}
             </div>
         </>
