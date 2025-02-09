@@ -1,6 +1,6 @@
 /* Core container with premium dark gradient */
 .hero-container {
-    background: linear-gradient(180deg, #1a1f2d 0%, #0f1117 100%);
+    /* background: linear-gradient(180deg, #1a1f2d 0%, #0f1117 100%); */
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -77,7 +77,7 @@
 .features-section {
     padding: 6rem 2rem;
     /* background: linear-gradient(180deg, #0f1117 0%, #1a1f2d 100%); */
-    background: linear-gradient(0deg, #1a1f2d 0%, #0f1117 100%);
+    /* background: linear-gradient(0deg, #1a1f2d 0%, #0f1117 100%); */
 }
 
 /* Enterprise-grade Section Header */
@@ -147,7 +147,7 @@
     text-align: center;
     padding: 4rem 1rem;
     /* background: linear-gradient(180deg, #0f1117 0%, #1a1f2d 100%); */
-    background: linear-gradient(180deg, #1a1f2d 0%, #0f1117 100%);
+    /* background: linear-gradient(180deg, #1a1f2d 0%, #0f1117 100%); */
 }
 
 /* CTA Title */
@@ -200,4 +200,148 @@
 
 .cta-button:hover::after {
     transform: translateX(4px);
+}
+
+/* Register and Login */
+/* Authentication Container Architecture */
+.auth-container {
+    max-width: 450px;
+    margin: 2rem auto;
+    padding: 2.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+}
+
+/* Form Strategic Framework */
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.auth-title {
+    color: #FFFFFF;
+    font-size: 1.875rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+}
+
+.auth-subtitle {
+    color: #94A3B8;
+    font-size: 1.125rem;
+    line-height: 1.5;
+}
+
+/* Input Field Innovation */
+.form-group {
+    position: relative;
+}
+
+.form-label {
+    display: block;
+    color: #E2E8F0;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.form-input {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: #FFFFFF;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #3B82F6;
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+/* Action Button System */
+.auth-button {
+    width: 100%;
+    padding: 1rem;
+    background: #3B82F6;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.auth-button:hover {
+    background: #2563EB;
+    transform: translateY(-2px);
+}
+
+/* Alternative Action Path */
+.auth-switch {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: #94A3B8;
+    font-size: 0.975rem;
+}
+
+.auth-switch-link {
+    color: #60A5FA;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 0.5rem;
+    transition: color 0.2s ease;
+}
+
+.auth-switch-link:hover {
+    color: #3B82F6;
+}
+
+/* Error State Management */
+.error-message {
+    color: #EF4444;
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+}
+
+.form-input.error {
+    border-color: #EF4444;
+}
+
+/* Password Visibility Toggle */
+.password-toggle {
+    position: absolute;
+    right: 1rem;
+    top: 2.5rem;
+    color: #94A3B8;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.password-toggle:hover {
+    color: #60A5FA;
+}
+
+
+/* Responsive Engineering */
+@media (max-width: 768px) {
+    .auth-container {
+        padding: 4rem 1rem;
+    }
+    
+    .auth-form {
+        padding: 1.5rem;
+    }
 }
