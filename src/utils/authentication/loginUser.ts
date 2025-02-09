@@ -1,22 +1,22 @@
 
 
-const GRAPHQL_URL = process.env.GRAPHQL_URL as string || `http://localhost:4000/`;
+const GRAPHQL_URL = process.env.GRAPHQL_URL as string;
 
 export const loginUser = async (email: string, password: string) => {
     const query = `query User($email: String!, $password: String!) {
         user(email: $email, password: $password) {
-        id
-        email
-        hashedPassword
-        fullName
-        contactInfo
-        taxInfo
-        bankingInfo
-        twoFactorSettings
-        createdAt
-        updatedAt
-        isActive
-        token
+            id
+            email
+            hashedPassword
+            fullName
+            contactInfo
+            taxInfo
+            bankingInfo
+            twoFactorSettings
+            createdAt
+            updatedAt
+            isActive
+            token
         }
     }`;
     const variables = {
