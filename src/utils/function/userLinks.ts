@@ -1,11 +1,8 @@
 
 
-const GRAPHQL_URL = `https://apollo-render-bd2p.onrender.com`;
-const GRAPHQL_TOKEN = `derp`;
-
 export const userLinks = async (userId: string) => {
-    // const GRAPHQL_URL = import.meta.env.VITE_GRAPHQL_URL as string;
-    // const GRAPHQL_TOKEN = import.meta.env.VITE_GRAPHQL_TOKEN as string;
+    const GRAPHQL_URL = import.meta.env.VITE_GRAPHQL_URL as string;
+    const GRAPHQL_TOKEN = import.meta.env.VITE_GRAPHQL_TOKEN as string;
     
     const query = `query Link($userId: ID!) {
         link(userId: $userId) {
