@@ -421,3 +421,88 @@
         white-space: nowrap;
     }
 }
+
+/* Dashboard Foundation - Mobile First Approach */
+.dashboard-container {
+    padding: clamp(1rem, 4vw, 2rem);
+    max-width: 1200px;
+    margin: 0 auto;
+    color: var(--text-primary);
+}
+
+/* Responsive Typography Scale */
+.welcome-header {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.profile-details {
+    color: var(--text-secondary);
+    font-size: clamp(0.875rem, 2vw, 1rem);
+    line-height: 1.6;
+}
+
+/* Adaptive Data Grid */
+.data-grid {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: clamp(1rem, 3vw, 2rem);
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* Mobile Grid Transformation */
+@media (max-width: 768px) {
+    .data-grid thead {
+        display: none; /* Enhanced mobile view */
+    }
+
+    .data-grid, .data-grid tbody, .data-grid tr, .data-grid td {
+        display: block;
+        width: 100%;
+    }
+
+    .data-grid tr {
+        margin-bottom: 1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        padding: 0.5rem 0;
+    }
+
+    .data-grid td {
+        display: flex;
+        padding: 0.75rem 1rem;
+        border: none;
+        text-align: left; /* Align values to the left */
+        position: relative;
+    }
+
+    .data-grid td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-right: -2rem;
+        flex-shrink: 0;
+        min-width: 120px; /* Ensures column names are aligned */
+    }
+}
+
+/* Status Indicator Refinement */
+.status-active {
+    display: inline-block;
+    color: #10B981;
+    background: rgba(16, 185, 129, 0.1);
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: clamp(0.75rem, 1.5vw, 0.875rem);
+    font-weight: 500;
+}
+
+.performance-title {
+    text-align: center;
+    align-self: center;
+    width: 100%;
+}

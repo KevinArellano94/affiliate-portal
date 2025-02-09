@@ -80,7 +80,7 @@ const Dashboard = ({ user }: any) => {
                     </div>
                 </section>
 
-                <h2>Links:</h2>
+                <h1 className="performance-title">Links</h1>
                 {links.length > 0 ? (
                     <table className="data-grid" border={2}>
                         <thead>
@@ -97,13 +97,13 @@ const Dashboard = ({ user }: any) => {
                         <tbody>
                             {links.map((link: any, index) => (
                             <tr key={index}>
-                                <td>{link.id}</td>
-                                <td>{link.urlSlug}</td>
-                                <td>{link.targetUrl}</td>
-                                <td>{link.platform}</td>
-                                <td>{link.isActive.toString()}</td>
-                                <td>{link.createdAt}</td>
-                                <td>{link.expiresAt}</td>
+                                <td data-label="ID">{link.id}</td>
+                                <td data-label="Slug">{link.urlSlug}</td>
+                                <td data-label="Target Url">{link.targetUrl}</td>
+                                <td data-label="Platform">{link.platform}</td>
+                                <td data-label="Active">{link.isActive.toString()}</td>
+                                <td data-label="Created At">{link.createdAt}</td>
+                                <td data-label="Expires At">{link.expiresAt}</td>
                             </tr>
                             ))}
                         </tbody>
@@ -114,13 +114,13 @@ const Dashboard = ({ user }: any) => {
 
                 <br /><br /><br /><br />
                 
-                <h2>Performance:</h2>
+                <h1 className="performance-title">Performance</h1>
                 {performances.length > 0 ? (
                     <table className="data-grid" border={2}>
                         <thead>
                             <tr>
                             <th>LinkId</th>
-                            <th>UserId</th>
+                            {/* <th>UserId</th> */}
                             <th>Platform</th>
                             <th>Total Clicks</th>
                             <th>Total Conversions</th>
@@ -131,13 +131,13 @@ const Dashboard = ({ user }: any) => {
                         <tbody>
                             {performances.map((performance: any, index) => (
                             <tr key={index}>
-                                <td>{performance.linkId}</td>
-                                <td>{performance.userId}</td>
-                                <td>{performance.platform}</td>
-                                <td>{performance.totalClicks}</td>
-                                <td>{performance.totalConversions}</td>
-                                <td>{performance.totalRevenue}</td>
-                                <td>{performance.totalCommission}</td>
+                                <td data-label="LinkId">{performance.linkId}</td>
+                                {/* <td data-label="UserId">{performance.userId}</td> */}
+                                <td data-label="Platform">{performance.platform}</td>
+                                <td data-label="Clicks">{performance.totalClicks}</td>
+                                <td data-label="Conversions">{performance.totalConversions}</td>
+                                <td data-label="Revenue">{performance.totalRevenue}</td>
+                                <td data-label="Commission">{performance.totalCommission}</td>
                             </tr>
                             ))}
                         </tbody>
