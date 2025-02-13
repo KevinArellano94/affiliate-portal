@@ -9,6 +9,7 @@ const Dashboard = lazy(() => import('./pages/Dashboard'));
 
 function App() {
 	const [user, setUser] = useState(null);
+	console.log(user);
 
 	return (
 		<>
@@ -17,7 +18,9 @@ function App() {
 			<Route path="/" element={<Home />} />
 			<Route path="/register" element={<Register />} />
 			<Route path="/login" element={<Login setUser={ setUser } />} />
-			<Route path="/dashboard" element={<Suspense fallback={<div>Loading...</div>}><Dashboard user={ user } /></Suspense>} />
+			{/* <Route path="/dashboard" element={<Suspense fallback={<div>Loading...</div>}><Dashboard user={ user } /></Suspense>} /> */}
+			<Route path="/dashboard" element={<Suspense fallback={<div>Loading...</div>}><Dashboard /></Suspense>} />
+			{/* <Route path="/dashboard" element={<Dashboard />}/> */}
 			</Routes>
 		</Router>
 		</>
