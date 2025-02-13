@@ -1,5 +1,5 @@
 // import { useNavigate } from "react-router-dom";
-// import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { ResponsiveContainer, LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
 import { DollarSign, Users, Link as LinkIcon, TrendingUp, CreditCard } from "lucide-react";
@@ -9,9 +9,9 @@ import "../components/ui/card.css";
 // import { userPerformance } from "../utils/function/userPerformances";
 // import { generateAffiliateUrl } from "../utils/function/userGenerateUrl";
 
+import { userRewardfulLinks } from "../utils/function/userRewardfulLinks";
 
-const Dashboard = () => {
-// const Dashboard = ({ user }: any) => {
+const Dashboard = ({ user }: any) => {
     // const [links, setLinks] = useState([]);
     // const [performances, setPerformances] = useState([]);
 
@@ -44,19 +44,37 @@ const Dashboard = () => {
     //     navigate("/");
     // };
 
-    // useEffect(() => {
-    //     const fetchLinks = async () => {
-    //         try {
-    //             const response = await userLinks(user.id);
-    //             setLinks(response?.data?.link || []);
+    const [rewardfulLinks, setRewardfulLinks]: any = useState([]);
+
+    const rewardfulAffiliateID: string = 'c6383d6c-f05b-4550-905c-0d513354a495';
+
+    useEffect(() => {
+        const fetchLinks = async () => {
+            try {
+                const response: any = await userRewardfulLinks(rewardfulAffiliateID);
+                setRewardfulLinks(response.data);
                 
-    //         } catch (error) {
-    //             console.error("Error fetching links:", error);
-    //         }
-    //     };
+            } catch (error) {
+                console.error("Error fetching links:", error);
+            }
+        };
     
-    //     fetchLinks();
-    // }, []);
+        fetchLinks();
+    }, []);
+
+    // console.log(rewardfulLinks);
+
+    let totalVisitors: number = 0;
+    const activeLinks = [];
+
+    for (const link of rewardfulLinks) {
+        totalVisitors += link.visitors;
+        activeLinks.push({
+            name: `${ link.token }`,
+            clicks: link.visitors,
+            conversion: `${ link.conversions }`
+        })
+    }
 
     // useEffect(() => {
     //     let isSubscribed = true;
@@ -103,8 +121,7 @@ const Dashboard = () => {
         { month: "Jan", visitors: 1200, leads: 85, commissions: 2450 },
         { month: "Feb", visitors: 1800, leads: 120, commissions: 3600 },
         { month: "Mar", visitors: 1400, leads: 95, commissions: 2850 },
-        { month: "Apr", visitors: 2200, leads: 150, commissions: 4500 },
-        { month: "May", visitors: 0, leads: 0, commissions: 0 },
+        { month: "Apr", visitors: 2200, leads: 150, commissions: 4500 }
       ];
       
       const paymentHistory = [
@@ -113,11 +130,11 @@ const Dashboard = () => {
         { date: "2024-12-01", amount: 2850, status: "Paid" },
       ];
       
-      const activeLinks = [
-        { name: "Product A Landing Page", clicks: 450, conversion: "3.2%" },
-        { name: "Summer Promo Campaign", clicks: 890, conversion: "4.1%" },
-        { name: "Special Offer Page", clicks: 670, conversion: "3.8%" },
-      ];
+    //   const activeLinks = [
+    //     { name: "Product A Landing Page", clicks: 450, conversion: "3.2%" },
+    //     { name: "Summer Promo Campaign", clicks: 890, conversion: "4.1%" },
+    //     { name: "Special Offer Page", clicks: 670, conversion: "3.8%" },
+    //   ];
 
     const StatCard = ({ icon: Icon, title, value, bgColor }: { icon: any; title: string; value: string | number; bgColor: string }) => (
         <div className="metric-card flex items-center">
@@ -142,7 +159,7 @@ const Dashboard = () => {
           </header>
     
           <div className="metrics-grid">
-            <StatCard icon={Users} title="Total Visitors" value={"6,600"} bgColor="bg-blue" />
+            <StatCard icon={Users} title="Total Visitors" value={ totalVisitors } bgColor="bg-blue" />
             <StatCard icon={TrendingUp} title="Total Leads" value={"450"} bgColor="bg-green" />
             <StatCard icon={DollarSign} title="Total Earnings" value={"$13,400"} bgColor="bg-purple" />
           </div>
