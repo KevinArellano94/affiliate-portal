@@ -1,6 +1,7 @@
 
 
 export const userRewardfulLinks = async (rewardfulAffiliateID: string) => {
+    console.log(rewardfulAffiliateID)
     return {
         "pagination": {
             "previous_page": null,
